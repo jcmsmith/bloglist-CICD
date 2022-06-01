@@ -20,7 +20,6 @@
     "cytest": "cd client && yarn cypress run",
     "build": "cd client && yarn run build",
     "movebuild": "cd client && cp -r build ../server",
-    "lint": "eslint .",
     "deploy": "git push heroku master"
   },
   "browserslist": {
