@@ -19,8 +19,8 @@
     "cyopen": "cd client && yarn run cyopen",
     "cytest": "cd client && yarn cypress run",
     "build": "cd client && yarn run build",
-    "movebuild": "cd client && cp -r build ../server",
-    "deploy": "git push heroku master"
+    "movebuild": "cd client && cp -r build ../server && rm -r build",
+    "deploy": "git push heroku main"
   },
   "browserslist": {
     "production": [
