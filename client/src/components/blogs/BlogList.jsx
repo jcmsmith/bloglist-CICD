@@ -13,7 +13,9 @@ const BlogList = ({ userId }) => {
   return (
     <div>
       <h2>Blog List</h2>
-      <Link to={`/blogs/new`}>Add new</Link>
+      <Link to={`/blogs/new`} data-cy="newblog-button">
+        Add new
+      </Link>
       <br />
       <List>
         {blogs.map((blog) => (
@@ -21,7 +23,7 @@ const BlogList = ({ userId }) => {
             key={blog.id}
             sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
           >
-            <ListItem disablePadding>
+            <ListItem disablePadding data-cy="blog-minimal">
               <Blog blog={blog} deleteAllowed={userId === blog.user.id} />
             </ListItem>
             <br />

@@ -33,6 +33,7 @@ const Header = () => {
     <div>
       <div>
         <h2>My Bloglist App</h2>
+        <Message />
       </div>
       {user.token !== null ? (
         <div>
@@ -47,14 +48,14 @@ const Header = () => {
               </Button>
 
               <div>
-                <em>Logged in as:</em> {user.name}
+                <em data-cy="loggedin-as-msg">Logged in as:</em>
+                {user.name}
                 <button onClick={handleLogout} style={margin}>
                   Logout
                 </button>
               </div>
             </Toolbar>
           </AppBar>
-          <Message />
         </div>
       ) : (
         <></>

@@ -26,14 +26,21 @@ const Blog = ({ blog, deleteAllowed }) => {
 
   return (
     <>
-      <ListItemButton component={Link} to={`${blog.id}`}>
-        <ListItemText primary={blog.title}>
-          <Link to={`${blog.id}`}></Link>
-        </ListItemText>
+      <ListItemButton
+        component={Link}
+        to={`${blog.id}`}
+        data-cy="blog-details-link"
+      >
+        <ListItemText primary={blog.title} data-cy="blog-title-minimal" />
       </ListItemButton>
 
       <div style={showDeleteButton}>
-        <button onClick={handleDeleteButton}>delete</button>
+        <button
+          onClick={handleDeleteButton}
+          data-cy="blog-delete-button-minimal"
+        >
+          delete
+        </button>
       </div>
     </>
   );

@@ -10,11 +10,15 @@
   "scripts": {
     "server-prod": "cd server && yarn start",
     "server-dev": "cd server && yarn run dev",
+    "server-testenv": "cd server && yarn run start:test",
     "server-test": "cd server && yarn test",
     "client-start": "cd client && yarn start",
     "client-build": "cd client && yarn run build",
     "client-test": "cd client && yarn tall",
-    "e2e-test": "cd client && yarn cypress run",
+    "server-cyopen": "(cd server && yarn run start:test) & (cd client && yarn run cyopen)",
+    "server-cytest": "(cd server && yarn run start:test) & (cd client && yarn cypress)",
+    "cyopen": "cd client && yarn run cyopen",
+    "cytest": "cd client && yarn cypress run",
     "lint": "eslint .",
     "deploy": "git push heroku master"
   }

@@ -42,7 +42,7 @@ const LoginForm = () => {
       dispatch(createMessage(`Welcome, ${user.name}!`));
     } catch (exception) {
       console.log(exception);
-      dispatch(createErrorMsg("Invalid username or password!"));
+      dispatch(createErrorMsg(`Invalid username or password!`));
     }
   };
 
@@ -59,6 +59,7 @@ const LoginForm = () => {
       <form onSubmit={handleLogin}>
         <div>
           <TextField
+            data-cy="username-input"
             id="filled-basic"
             label="username"
             type="text"
@@ -70,6 +71,7 @@ const LoginForm = () => {
         <br />
         <div>
           <TextField
+            data-cy="password-input"
             id="filled-basic"
             label="password"
             type="password"
@@ -79,7 +81,12 @@ const LoginForm = () => {
           />
         </div>
         <br />
-        <Button variant="contained" color="primary" type="submit">
+        <Button
+          variant="contained"
+          color="primary"
+          type="submit"
+          data-cy="login-button"
+        >
           login
         </Button>
       </form>

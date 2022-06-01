@@ -8,6 +8,7 @@ node_modules/
 # testing
 /coverage/
 client/cypress/downloads
+client/cypress/videos
 
 # production
 

@@ -60,13 +60,16 @@ const BlogInfo = () => {
   return (
     <>
       <br />
-      <div style={infoBoxStyle}>
-        <h2>&quot;{blog.title}&quot;</h2>
+      <div style={infoBoxStyle} data-cy="blog-expanded">
+        <h2 data-cy="blog-title-expanded">&quot;{blog.title}&quot;</h2>
         <h3>Author: {blog.author}</h3>
         <p>Link: {blog.url}</p>
         <div>
-          <p>
-            {blog.likes} likes <button onClick={handleLikeButton}>Like</button>
+          <p data-cy="blog-likes-label">
+            {blog.likes} likes{" "}
+            <button onClick={handleLikeButton} data-cy="blog-like-button">
+              Like
+            </button>
           </p>
         </div>
         <p>Added by: {blog.user.name}</p>

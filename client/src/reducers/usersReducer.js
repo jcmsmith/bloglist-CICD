@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import store from "../store";
 import { setToken } from "../services/blogs";
-import { getAll, create } from "../services/users";
+import { getAll } from "../services/users";
 
 const initialUser = { username: "", name: "", id: "", token: null };
 
