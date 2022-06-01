@@ -1,13 +1,16 @@
-require("dotenv").config();
+const path = require("path");
+require("dotenv").config({ path: path.resolve(__dirname, "../../.env") });
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.REACT_APP_PORT || 3001;
 
-const NODE_ENV = process.env.NODE_ENV;
+const NODE_ENV = process.env.REACT_APP_NODE_ENV;
 
 const MONGODB_URI =
-  NODE_ENV === "test" ? process.env.TEST_MONGODB_URI : process.env.MONGODB_URI;
+  NODE_ENV === "test"
+    ? process.env.REACT_APP_TEST_MONGODB_URI
+    : process.env.REACT_APP_MONGODB_URI;
 
-const SECRET = process.env.SECRET;
+const SECRET = process.env.REACT_APP_SECRET;
 
 module.exports = {
   MONGODB_URI,

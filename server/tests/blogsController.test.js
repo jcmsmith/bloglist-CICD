@@ -22,11 +22,14 @@ const loginAsUser = async (username = "", password = "") => {
 
   const login = await api.post("/api/login").send(user).expect(200);
 
-  return login._body.token;
+  debugger;
+
+  return login.body.token;
 };
 
 beforeAll(async () => {
   await User.deleteMany({});
+  debugger;
 
   return await helper.createRootUser();
 });
@@ -34,7 +37,7 @@ beforeAll(async () => {
 beforeEach(async () => {
   await Blog.deleteMany({});
 
-  const blogs = await helper.initialBlogs;
+  const blogs = helper.initialBlogs;
 
   for (let blog of blogs) {
     let blogObject = new Blog(blog);

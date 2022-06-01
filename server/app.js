@@ -8,7 +8,7 @@ require("express-async-errors");
 const blogsRouter = require("./controllers/blogs");
 const usersRouter = require("./controllers/users");
 const loginRouter = require("./controllers/login");
-const pingRouter = requre("./controllers/ping");
+const pingRouter = require("./controllers/ping");
 const middleware = require("./utils/middleware");
 const logger = require("./utils/logger");
 
@@ -22,7 +22,10 @@ mongoose
   });
 
 app.use(cors());
-app.use(express.static("build"));
+if (config.NODE_ENV !== "test") {
+  app.use(express.static("build"));
+}
+
 app.use(express.json());
 app.use(middleware.tokenExtractor);
 app.use(middleware.requestLogger);
@@ -30,7 +33,7 @@ app.use(middleware.requestLogger);
 app.use("/api/login", loginRouter);
 app.use("/api/blogs", blogsRouter);
 app.use("/api/users", usersRouter);
-app.use("/", pingRouter);
+app.use("/api/ping", pingRouter);
 
 if (config.NODE_ENV === "test") {
   const testingRouter = require("./controllers/testing");

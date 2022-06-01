@@ -1,10 +1,10 @@
 const pingRouter = require("express").Router();
 
-pingRouter.get("/ping", (request, response) => {
+pingRouter.get("/", (request, response) => {
   response.status(200);
 });
 
-pingRouter.get("/healthcheck", (request, response) => {
+pingRouter.get("/health", (request, response) => {
   response.send("all good");
 });
 
