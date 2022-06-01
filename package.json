@@ -1,0 +1,21 @@
+{
+  "name": "bloglist-cicd",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "server",
+    "client"
+  ],
+  "scripts": {
+    "server-prod": "cd server && yarn start",
+    "server-dev": "cd server && yarn run dev",
+    "server-test": "cd server && yarn test",
+    "client-start": "cd client && yarn start",
+    "client-build": "cd client && yarn run build",
+    "client-test": "cd client && yarn tall",
+    "e2e-test": "cd client && yarn cypress run",
+    "lint": "eslint .",
+    "deploy": "git push heroku master"
+  }
+}

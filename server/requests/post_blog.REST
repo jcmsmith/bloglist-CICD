@@ -1,0 +1,22 @@
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWQiOiI2MjczYTA1YmQxZGI3N2JkYmE2MDkyODciLCJpYXQiOjE2NTE3NDYyMjksImV4cCI6MTY1MTc1MzQyOX0.oLiZSIzTwFQhp3Xk-RQT_GODbUc9TXHrg2r8E4CR8Ts
+
+{
+    "title": "Brand New Blog",
+    "author": "John Doe",
+    "url": "Mozilla.org",
+    "likes": 0,
+    "user": {
+        "id":"6273a05bd1db77bdba609287"
+    }
+}
+
+###
+DELETE http://localhost:3003/api/blogs/6270a147feda4206d79295bc
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWQiOiI2MjczYTA1YmQxZGI3N2JkYmE2MDkyODciLCJpYXQiOjE2NTE3NDYyMjksImV4cCI6MTY1MTc1MzQyOX0.oLiZSIzTwFQhp3Xk-RQT_GODbUc9TXHrg2r8E4CR8Ts
+
+{
+    "userId": "626cfae7c484921fce1adf9a"
+}
