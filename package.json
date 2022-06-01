@@ -12,14 +12,26 @@
     "server-dev": "cd server && yarn run dev",
     "server-testenv": "cd server && yarn run start:test",
     "server-test": "cd server && yarn test",
-    "client-start": "cd client && yarn start",
-    "client-build": "cd client && yarn run build",
-    "client-test": "cd client && yarn tall",
     "server-cyopen": "(cd server && yarn run start:test) & (cd client && yarn run cyopen)",
     "server-cytest": "(cd server && yarn run start:test) & (cd client && yarn cypress)",
+    "client-start": "cd client && yarn start",
+    "client-test": "cd client && yarn tall",
     "cyopen": "cd client && yarn run cyopen",
     "cytest": "cd client && yarn cypress run",
+    "build": "cd client && yarn run build",
+    "movebuild": "cd client && cp -r build ../server",
     "lint": "eslint .",
     "deploy": "git push heroku master"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ]
+  },
+  "engines": {
+    "node": "16.x",
+    "yarn": "1.22.x"
   }
 }

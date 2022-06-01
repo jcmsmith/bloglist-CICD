@@ -11,7 +11,8 @@ client/cypress/downloads
 client/cypress/videos
 
 # production
-
+client/build
+server/build
 
 # misc
 .DS_Store
@@ -26,3 +27,7 @@ yarn-debug.log*
 yarn-error.log*
 
 .vscode
+
+.env*
+!.env.project
+!.env.vault
