@@ -17,18 +17,24 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: "16"
+      - name: remove node_modules
+        run: yarn reset_modules
       - name: yarn install
         run: yarn install --immutable --immutable-cache --check-cache
       - name: build
         run: yarn run build
       - name: server tests
         run: yarn run server-test
+      - name: start server
+        run: yarn run server-testenv
+      - name: check server
+        run: curl "http://localhost:3003"
       - name: e2e tests
         uses: cypress-io/github-action@v4
         with:
           command: yarn run cytest
-          start: yarn run server-testenv
-          wait-on: "http://localhost:3003"
+          start: yarn start
+          wait-on: "http://localhost:3000"
       - name: deploy to heroku
         uses: akhileshns/heroku-deploy@v3.12.12
         if: |

@@ -18,8 +18,8 @@
     "cyopen": "cd client && yarn run cyopen",
     "cytest": "cd client && yarn cypress run",
     "build": "cd client && yarn run build  && cp -r build ../server && rm -r build",
-    "deploy": "git push heroku main",
-    "get-env": "npx dotenv-vault pull ci"
+    "reset_modules": "cd client && rm -r node_modules && cd ../server && rm -r node_modules",
+    "deploy": "git push heroku main"
   },
   "browserslist": {
     "production": [
