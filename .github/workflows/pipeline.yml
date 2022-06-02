@@ -18,18 +18,35 @@ jobs:
         with:
           node-version: "16"
       - name: yarn install
-        run: yarn install
+        run: yarn install --immutable --immutable-cache --check-cache
       - name: build
         run: yarn run build
       - name: server tests
         run: yarn run server-test
-      - name: e2e tests
-        uses: cypress-io/github-action@v2
+
+  cypress-run:
+    needs: [simple_deployment_pipeline]
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+      - name: yarn install
+        run: yarn install --immutable --immutable-cache --check-cache
+      - name: Cypress run
+        uses: cypress-io/github-action@v4
         with:
           command: yarn run cytest
           start: (yarn run server-prod) & (yarn run client-start)
           wait-on: http://localhost:3003
           env: REACT_APP_TEST_MONGODB_URI=${{secrets.REACT_APP_TEST_MONGODB_URI}},REACT_APP_SECRET=${{secrets.REACT_APP_SECRET}}
+          browser: chrome
+
+  deploy-to-heroku:
+    needs: [cypress-run]
+    runs-on: ubuntu-20.04
+    steps:
       - name: deploy to heroku
         uses: akhileshns/heroku-deploy@v3.12.12
         if: |
