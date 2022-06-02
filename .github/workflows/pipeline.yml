@@ -17,8 +17,6 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: "16"
-      - name: remove node_modules
-        run: yarn reset_modules
       - name: yarn install
         run: yarn install --immutable --immutable-cache --check-cache
       - name: build
@@ -30,7 +28,7 @@ jobs:
       - name: check server
         run: curl "http://localhost:3003"
       - name: e2e tests
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v3
         with:
           command: yarn run cytest
           start: yarn start
