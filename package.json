@@ -8,7 +8,7 @@
     "client"
   ],
   "scripts": {
-    "fullstack": "(yarn run server-prod) & (cd ../ && yarn run client-start)",
+    "fullstack": "(yarn run server-testenv) & (yarn run client-start)",
     "server-prod": "cd server && yarn start",
     "server-dev": "cd server && yarn run dev",
     "server-testenv": "cd server && yarn run start:test",

@@ -39,6 +39,8 @@ const App = () => {
     },
   });
 
+  console.log(user);
+
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -47,8 +49,8 @@ const App = () => {
           <Routes>
             {user.token === null ? (
               <>
-                <Route path="/" element={<Navigate replace to="/login" />} />
                 <Route path="/login" element={<LoginForm />} />
+                <Route path="*" element={<Navigate replace to="/login" />} />
               </>
             ) : (
               <>
@@ -61,16 +63,13 @@ const App = () => {
                 />
                 <Route path="/users" element={<UserList />} />
                 <Route path="/users/:id" element={<UserInfo />} />
+                <Route
+                  path="/login"
+                  element={<Navigate replace to="/blogs" />}
+                />
               </>
             )}
-            <Route
-              path="*"
-              element={
-                <>
-                  <h3>There's nothing here!</h3>
-                </>
-              }
-            />
+            <Route path="*" element={<h3>There's nothing here!</h3>} />
           </Routes>
         </Container>
       </ThemeProvider>

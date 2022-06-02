@@ -3,7 +3,7 @@ require("dotenv").config({ path: path.resolve(__dirname, "../../.env") });
 
 const PORT = process.env.REACT_APP_PORT || 3001;
 
-const NODE_ENV = process.env.REACT_APP_NODE_ENV;
+const NODE_ENV = process.env.NODE_ENV;
 
 const MONGODB_URI =
   NODE_ENV === "test"

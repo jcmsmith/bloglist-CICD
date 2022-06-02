@@ -9,6 +9,7 @@ node_modules/
 /coverage/
 client/cypress/downloads
 client/cypress/videos
+client/cypress/screenshots
 
 # production
 client/build

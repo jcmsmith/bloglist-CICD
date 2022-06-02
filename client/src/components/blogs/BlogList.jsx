@@ -6,9 +6,6 @@ import { Link } from "react-router-dom";
 
 const BlogList = ({ userId }) => {
   const blogs = useSelector((state) => state.blogs);
-  if (!blogs) {
-    return null;
-  }
 
   return (
     <div>
@@ -17,20 +14,22 @@ const BlogList = ({ userId }) => {
         Add new
       </Link>
       <br />
-      <List>
-        {blogs.map((blog) => (
-          <Box
-            key={blog.id}
-            sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
-          >
-            <ListItem disablePadding data-cy="blog-minimal">
-              <Blog blog={blog} deleteAllowed={userId === blog.user.id} />
-            </ListItem>
-            <br />
-            <Divider />
-          </Box>
-        ))}
-      </List>
+      {blogs !== null ? (
+        <List>
+          {blogs.map((blog) => (
+            <Box
+              key={blog.id}
+              sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
+            >
+              <ListItem disablePadding data-cy="blog-minimal">
+                <Blog blog={blog} deleteAllowed={userId === blog.user.id} />
+              </ListItem>
+              <br />
+              <Divider />
+            </Box>
+          ))}
+        </List>
+      ) : null}
     </div>
   );
 };
