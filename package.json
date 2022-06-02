@@ -15,6 +15,7 @@
     "server-test": "cd server && yarn test",
     "server-cyopen": "(cd server && yarn run start:test) & (cd client && yarn run cyopen)",
     "start": "cd client && yarn start",
+    "start-cytest": "",
     "cyopen": "cd client && yarn run cyopen",
     "cytest": "cd client && yarn cypress run",
     "build": "cd client && yarn run build  && cp -r build ../server && rm -r build",
