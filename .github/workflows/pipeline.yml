@@ -8,6 +8,10 @@ on:
 jobs:
   simple_deployment_pipeline:
     runs-on: ubuntu-20.04
+    env:
+      REACT_APP_MONGODB_URI: ${{secrets.REACT_APP_MONGODB_URI}}
+      REACT_APP_TEST_MONGODB_URI: ${{secrets.REACT_APP_TEST_MONGODB_URI}}
+      REACT_APP_SECRET: ${{secrets.REACT_APP_SECRET}}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -19,14 +23,11 @@ jobs:
         run: yarn run build
       - name: server tests
         run: yarn run server-test
-        env:
-          REACT_APP_TEST_MONGODB_URI: ${{secrets.REACT_APP_TEST_MONGODB_URI}}
-          REACT_APP_SECRET: ${{secrets.REACT_APP_SECRET}}
       - name: e2e tests
         uses: cypress-io/github-action@v2
         with:
           command: yarn run cytest
-          start: yarn run fullstack
+          start: (yarn run server-prod) & (yarn run client-start)
           wait-on: http://localhost:3003
           env: REACT_APP_TEST_MONGODB_URI=${{secrets.REACT_APP_TEST_MONGODB_URI}},REACT_APP_SECRET=${{secrets.REACT_APP_SECRET}}
       - name: deploy to heroku
