@@ -42,7 +42,7 @@ it("reset endpoint should reset db", async () => {
 });
 
 it("ping and healthcheck endpoints should both work", async () => {
-  await api.get("/api/ping/").expect(200);
+  await api.get("/ping").expect(200);
 
-  await api.get("/api/ping/health/").expect(200);
+  await api.get("/health").expect(200);
 });
