@@ -39,8 +39,6 @@ const App = () => {
     },
   });
 
-  console.log(user);
-
   return (
     <>
       <ThemeProvider theme={theme}>

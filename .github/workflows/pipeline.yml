@@ -28,7 +28,7 @@ jobs:
         with:
           command: yarn run cytest
           start: yarn run fullstack
-          wait-on: http://localhost:3000
+          wait-on: http://localhost:3003
           browser: chrome
       - name: deploy to heroku
         uses: akhileshns/heroku-deploy@v3.12.12
@@ -39,7 +39,7 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "hidden-plains-11579"
           heroku_email: "jeremycmsmith+heroku@gmail.com"
-          healthcheck: "https://hidden-plains-11579.herokuapp.com/ping/health"
+          healthcheck: "https://hidden-plains-11579.herokuapp.com/api/ping/health"
           checkstring: "all good"
           delay: 5
           rollbackonhealthcheckfailed: true
