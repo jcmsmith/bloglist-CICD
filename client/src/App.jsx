@@ -48,7 +48,7 @@ const App = () => {
             {user.token === null ? (
               <>
                 <Route path="/login" element={<LoginForm />} />
-                <Route path="*" element={<Navigate replace to="/login" />} />
+                <Route path="/" element={<Navigate replace to="/login" />} />
               </>
             ) : (
               <>

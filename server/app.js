@@ -5,7 +5,6 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 require("express-async-errors");
 
-const pingRouter = require("./controllers/ping");
 const blogsRouter = require("./controllers/blogs");
 const usersRouter = require("./controllers/users");
 const loginRouter = require("./controllers/login");
@@ -30,7 +29,14 @@ app.use(express.json());
 app.use(middleware.tokenExtractor);
 app.use(middleware.requestLogger);
 
-app.use("/api/ping", pingRouter);
+app.get("/ping", (request, res) => {
+  res.status(200).send("pong");
+});
+
+app.get("/health", (request, res) => {
+  res.status(200).send("all good");
+});
+
 app.use("/api/login", loginRouter);
 app.use("/api/blogs", blogsRouter);
 app.use("/api/users", usersRouter);

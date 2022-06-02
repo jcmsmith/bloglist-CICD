@@ -3,7 +3,7 @@ name: Deployment pipeline
 on:
   push:
     branches:
-      - Create-pipeline
+      - main
 
 jobs:
   simple_deployment_pipeline:
@@ -38,7 +38,7 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "hidden-plains-11579"
           heroku_email: "jeremycmsmith+heroku@gmail.com"
-          healthcheck: "https://hidden-plains-11579.herokuapp.com/api/ping/health"
+          healthcheck: "https://hidden-plains-11579.herokuapp.com/health"
           checkstring: "all good"
           delay: 5
           rollbackonhealthcheckfailed: true
