@@ -22,14 +22,11 @@ const loginAsUser = async (username = "", password = "") => {
 
   const login = await api.post("/api/login").send(user).expect(200);
 
-  debugger;
-
   return login.body.token;
 };
 
 beforeAll(async () => {
   await User.deleteMany({});
-  debugger;
 
   return await helper.createRootUser();
 });
